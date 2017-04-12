@@ -6,6 +6,7 @@
 
 # Report
 ValidationReport/*
+Validation*.xml
 
 # VSCode
 .vscode/*
