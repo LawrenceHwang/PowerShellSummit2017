@@ -28,6 +28,9 @@ Describe 'PowerShell Summit 2017 EC2 CloufFormation Deployment Validation' {
   It 'attaches the created security group to the instance' {
     $instance.Instances.SecurityGroups.GroupId | Should Be $SecurityGroup.GroupId
   }
+  It 'has no instance iam role' {
+    $instance.Instances.IamInstanceRole | Should Be $null
+  }
   It 'the IIS default site is accessible' {
     $uri = $instance.instances.PublicIpAddress
     $HttpStatusCode = (Invoke-WebRequest -Uri $URI).statuscode
