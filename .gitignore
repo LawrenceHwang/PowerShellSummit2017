@@ -1,0 +1,12 @@
+# Executable
+*.exe
+
+# Report
+ValidationReport/*
+
+# VSCode
+.vscode/*
+
+# Pending Review
+Connect-EC2Windows.ps1
+Get-EC2Windows.ps1
