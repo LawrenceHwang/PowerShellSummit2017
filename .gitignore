@@ -1,6 +1,9 @@
 # Executable
 *.exe
 
+# Pic
+*.jpg
+
 # Report
 ValidationReport/*
 
@@ -10,3 +13,4 @@ ValidationReport/*
 # Pending Review
 Connect-EC2Windows.ps1
 Get-EC2Windows.ps1
+Demo.ps1
