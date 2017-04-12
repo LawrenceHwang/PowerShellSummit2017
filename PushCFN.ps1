@@ -1,7 +1,7 @@
 Initialize-AWSDefaults -ProfileName myaws
 Set-DefaultAWSRegion -Region 'us-west-2'
 
-$Template = "$env:USERPROFILE\OneDrive\Code\github\PowerShellSummit2017\EC2.yaml"
+$Template = "$env:USERPROFILE\OneDrive\Code\github\PowerShellSummit2017\EC2.json"
 $TemplateBody = get-content -Path $Template -Raw
 Test-CFNTemplate -TemplateBody $TemplateBody -OutVariable cfn
 
