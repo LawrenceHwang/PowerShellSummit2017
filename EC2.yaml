@@ -1,0 +1,87 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: This template creates one windows ec2instance
+Parameters:
+  ec2instanceImageId:
+    Description: The image ID to use for the ec2instance
+    Type: String
+  ec2instanceInstanceType:
+    Description: The instance type to use for the ec2instance
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - t2.small
+      - t2.medium
+  KeyName:
+    Description: The key name to use for break-glass instance access
+    Type: 'AWS::EC2::KeyPair::KeyName'
+Resources:
+  ec2instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId:
+        Ref: ec2instanceImageId
+      InstanceType:
+        Ref: ec2instanceInstanceType
+      KeyName:
+        Ref: KeyName
+      Tags:
+        - Key: Name
+          Value: PowerShellRocks
+        - Key: expiry-date
+          Value: na
+        - Key: stack
+          Value:
+            Ref: 'AWS::StackName'
+      UserData:
+        'Fn::Base64':
+          'Fn::Join':
+            - ''
+            - - |
+                <powershell>
+              - Install-WindowsFeature Web-Server
+              - '</powershell>'
+      SecurityGroupIds:
+        - Ref: ec2instanceSG
+  ec2instanceEIP:
+    Type: 'AWS::EC2::EIP'
+    Properties:
+      Domain: vpc
+  ec2instanceEIPAssociation:
+    Type: 'AWS::EC2::EIPAssociation'
+    Properties:
+      AllocationId:
+        'Fn::GetAtt':
+          - ec2instanceEIP
+          - AllocationId
+      InstanceId:
+        Ref: ec2instance
+  ec2instanceSG:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Security group for RDP ec2instance
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '3389'
+          ToPort: '3389'
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: PowerShellRocks
+        - Key: expiry-date
+          Value: na
+        - Key: stack
+          Value:
+            Ref: 'AWS::StackName'
+        - Key: application
+          Value: cloud
+Outputs:
+  Outputec2instance:
+    Description: The IP address of ec2instance 1
+    Value:
+      Ref: ec2instanceEIP
