@@ -7,6 +7,7 @@ Test-CFNTemplate -TemplateBody $TemplateBody -OutVariable cfn
 
 $ImageId = Get-EC2ImageByName -Name windows_2016_base | Select-Object -ExpandProperty ImageId
 $StackName  = 'PowerShellSummit2017Demo'
+
 $param = @(
   @{ ParameterKey = "ec2instanceInstanceType"; ParameterValue = "t2.micro" },
   @{ ParameterKey = "ec2instanceImageId"; ParameterValue = "$ImageID" },
@@ -44,7 +45,6 @@ while ($true) {
     $speak.Speak("The stack is now created")
     break
   }
-
   Start-Sleep 5
   Write-Output "******** $count ********"
   $count++
