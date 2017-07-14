@@ -4,14 +4,9 @@
 # Pic
 *.jpg
 
-# Report
-ValidationReport/*
-Validation*.xml
 
 # VSCode
 .vscode/*
 
-# Pending Review
-Connect-EC2Windows.ps1
-Get-EC2Windows.ps1
-Demo.ps1
+# PEM cert
+*.pem
