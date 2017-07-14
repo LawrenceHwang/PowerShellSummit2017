@@ -4,9 +4,6 @@
 # Pic
 *.jpg
 
-# Report
-ValidationReport/*
-Validation*.xml
 
 # VSCode
 .vscode/*
