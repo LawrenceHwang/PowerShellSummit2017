@@ -11,7 +11,11 @@ Validation*.xml
 # VSCode
 .vscode/*
 
+# PEM cert
+*.pem
+
 # Pending Review
 Connect-EC2Windows.ps1
 Get-EC2Windows.ps1
 Demo.ps1
+
