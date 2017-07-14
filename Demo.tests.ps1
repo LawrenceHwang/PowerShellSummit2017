@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-  [string]$CfnStackName
+  [string]$CfnStackName ='PowerShellSummit2017Demo'
 )
 Initialize-AWSDefaults -ProfileName myaws
 Set-DefaultAWSRegion 'us-west-2'
