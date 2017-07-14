@@ -1,5 +1,5 @@
 <#
-    Stage 1. Build - Remember to log into the web console :)
+    Stage 1. Build
 #>
 $demopath       = "$env:USERPROFILE\OneDrive\Code\github\PowerShellSummit2017"
 $StackName      = 'PowerShellSummit2017Demo'
@@ -7,7 +7,7 @@ $AWSProfileName = 'myaws'
 $AWSRegion      = 'us-west-2'
 $KeyName        = 'powershellsummit2017'
 
-# push CFN
+# Push CFN
 Initialize-AWSDefaults -ProfileName "$AWSProfileName"
 Set-DefaultAWSRegion -Region $AWSRegion
 (New-EC2KeyPair -KeyName $KeyName -Verbose).KeyMaterial | Out-File "$DemoPath\$KeyName.pem"
@@ -56,17 +56,17 @@ while ($true) {
   Write-Output "******** $count ********`n`n"
   $count++
 }
-# End section push CFN
-break
 
-# it_doesnt_workwhy.jpg
+break # End of Stage 1.
+
+
 
 <#
     Stage 2. Test and Validate for our opinions against the infrastructure.
-    Testing for resource deployment
-    Testing for resource relationship
-    Testing for things that shouldn't be there
-    Testing for integration (e.g. IIS site)
+        - Testing for resource deployment
+        - Testing for resource relationship
+        - Testing for things that shouldn't be there
+        - Testing for integration (e.g. IIS site)
 #>
 
 #Run Pester
@@ -78,16 +78,21 @@ Invoke-Item $demopath\ValidationReport\ValidationResult.html
 
 break
 
-# 2.mycodeworks.jpg
-
 # Bonus: Reduce the time to initiate RDP connection.
 . $demopath\get-ec2windows.ps1
 . $demopath\Connect-EC2Windows.ps1
 get-ec2windows -CertFolderPath $demopath
 get-ec2windows | Connect-EC2Windows -CertFolderPath $demopath
 
-break
-# Clean up
+break # End of Stage 2.
+
+
+
+<#
+    Stage 3. Tear Down
+#>
 Remove-CFNStack -StackName $StackName -Verbose -Force
 Remove-EC2KeyPair -KeyName $KeyName -Verbose -Force
 Remove-item -Path "$DemoPath\$KeyName.pem" -Verbose -Force
+
+break # End of Stage 3.
