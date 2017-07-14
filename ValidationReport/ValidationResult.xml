@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="8" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2017-07-14" time="14:07:53">
+  <environment user="lawre" machine-name="DESKTOP-PBNLJ3T" cwd="C:\Users\lawre\OneDrive\Code" user-domain="DESKTOP-PBNLJ3T" platform="Microsoft Windows 10 Pro|C:\WINDOWS|\Device\Harddisk0\Partition3" nunit-version="2.5.8.0" os-version="10.0.15063" clr-version="4.0.30319.42000" />
+  <culture-info current-culture="en-CA" current-uiculture="en-GB" />
+  <test-suite type="Powershell" name="Pester" executed="True" result="Success" success="True" time="16.6344" asserts="0">
+    <results>
+      <test-suite type="TestFixture" name="PowerShell Summit 2017 EC2 CloufFormation Deployment Validation" executed="True" result="Success" success="True" time="16.6344" asserts="0" description="PowerShell Summit 2017 EC2 CloufFormation Deployment Validation">
+        <results>
+          <test-case description="deploys one ec2 instance" name="PowerShell Summit 2017 EC2 CloufFormation Deployment Validation.deploys one ec2 instance" time="2.8055" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="ec2 instance uses latest ami" name="PowerShell Summit 2017 EC2 CloufFormation Deployment Validation.ec2 instance uses latest ami" time="6.7289" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="starts the ec2 instance" name="PowerShell Summit 2017 EC2 CloufFormation Deployment Validation.starts the ec2 instance" time="0.012" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="attaches a public IP to the instance" name="PowerShell Summit 2017 EC2 CloufFormation Deployment Validation.attaches a public IP to the instance" time="0.0602" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="creates one security group" name="PowerShell Summit 2017 EC2 CloufFormation Deployment Validation.creates one security group" time="0.0079" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="attaches the created security group to the instance" name="PowerShell Summit 2017 EC2 CloufFormation Deployment Validation.attaches the created security group to the instance" time="0.0459" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has no instance iam role" name="PowerShell Summit 2017 EC2 CloufFormation Deployment Validation.has no instance iam role" time="0.0424" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="the IIS default site is accessible" name="PowerShell Summit 2017 EC2 CloufFormation Deployment Validation.the IIS default site is accessible" time="6.9317" asserts="0" success="True" result="Success" executed="True" />
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
